@@ -15,6 +15,8 @@
                         Title: {{$posts->title}}<br>
                         Description: {{$posts->description}}<br>
                         Created At: {{$posts->created_at}}<br>
+                        Post Image:
+                        <img src="{{ asset('/storage/img/'.$posts->img) }} ">
                    @endforeach
                 </div>
             </div>
