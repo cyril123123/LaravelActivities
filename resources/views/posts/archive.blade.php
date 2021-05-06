@@ -8,14 +8,16 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+
+            @if(session('message'))
+              <div class="alert alert-success">
+                    {{ session('message') }}
+              </div>
+            @endif
+
             <a class="btn button btn-info" href="/posts/create">Create New</a>
             <br><br>
-            @if (session('status'))
-                <div class="alert alert-success">
-                    {{ session('status') }}
-                </div>                
-            @endif
-            <div class="card">       
+            <div class="card">
                 <div class="card-body">
                     <table class="table">
                         <thead>
@@ -32,24 +34,19 @@
                                     <td> {{ $posts->id }} </td>
                                     <td> {{ $posts->title }} </td>
                                     <td> {{ $posts->description }} </td>
-                                    <td> <a  href="/posts/{{$posts->id}}" class="btn btn-info"> View </a> </td>
-                                    <td> <a  href="/posts/{{$posts->id}}/edit" class="btn btn-warning"> Edit </a> </td>
-                                    <td> 
-                                        <form method="POST" action=" {{ route('posts.destroy', $posts->id)}}">
-                                                @method('DELETE')
-                                                @csrf
-                                                <button type="submit" class="btn btn-danger">Delete</button>
-                                        </form>
-                                    </td>
+                                    <td> <a  href="/posts/{{$posts->id}}/restore" class="btn btn-info"> restore </a> </td>
+                                    {{-- <td> <a  href="/posts/{{$post->id}}/edit" class="btn btn-warning"> Edit </a> </td> --}}
+
+
+                                    </form>
                               </tr>
                             @endforeach
                         </tbody>
                     </table>
-                    Total # of Post  {{ $count }}
                 </div>
             </div>
         </div>
     </div>
 </div>
-    
+
 @endsection

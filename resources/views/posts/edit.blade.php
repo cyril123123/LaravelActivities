@@ -18,7 +18,6 @@
                                 </textarea>
 
                                 <input type="submit" value="Submit">
-                        </form>
                        @endforeach
                     </div>
                 </div>
